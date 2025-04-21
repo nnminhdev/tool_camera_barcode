@@ -133,6 +133,7 @@ export default function Home() {
 				alert("Không tìm thấy nội dung ảnh");
 				return;
 			}
+            // 578516533320255302
 			const searchOrder = await searchOrderPancakeById(
 				"578516533320255302"
 			);
@@ -251,7 +252,7 @@ export default function Home() {
 							<div className="ocr-box">
 								<div className="ocr-header">
 									<h3 className="ocr-title">
-										Nội dung đã đọc được:
+										Đơn hàng ghi nhận:
 									</h3>
 								</div>
 								<div className="ocr-content">
@@ -339,7 +340,7 @@ export default function Home() {
 												y2="3"
 											></line>
 										</svg>
-										Tải ảnh về
+										Tải ảnh lên POS
 									</>
 								)}
 							</button>
