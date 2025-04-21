@@ -176,26 +176,26 @@ export default function Home() {
 	};
 
 	return (
-		<main className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-gray-50 to-gray-100">
-			<div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+		<main className="main-container">
+			<div className="card">
 				{capturedImage && (
-					<div className="relative">
+					<div className="image-container">
 						<img
 							src={
 								URL.createObjectURL(capturedImage) ||
 								"/placeholder.svg"
 							}
 							alt="Captured"
-							className="w-full h-auto object-cover rounded-t-xl"
+							className="captured-image"
 						/>
-						<div className="absolute top-3 right-3">
+						<div className="expand-button-container">
 							<button
 								onClick={() =>
 									window.open(
 										URL.createObjectURL(capturedImage)
 									)
 								}
-								className="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-all shadow-sm"
+								className="expand-button"
 								title="Xem ảnh đầy đủ"
 							>
 								<svg
@@ -208,7 +208,7 @@ export default function Home() {
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									className="text-gray-700"
+									className="expand-icon"
 								>
 									<path d="M15 3h6v6"></path>
 									<path d="M10 14 21 3"></path>
@@ -219,11 +219,11 @@ export default function Home() {
 					</div>
 				)}
 
-				<div className="p-6">
+				<div className="content">
 					{isProcessing && (
-						<div className="mb-5 p-4 bg-blue-50 border border-blue-100 text-blue-700 rounded-lg flex items-center space-x-3 animate-pulse">
+						<div className="processing-indicator">
 							<svg
-								className="animate-spin h-5 w-5 text-blue-600"
+								className="spinner"
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
 								viewBox="0 0 24 24"
@@ -247,27 +247,25 @@ export default function Home() {
 					)}
 
 					{ocrText && (
-						<div className="mb-5 overflow-hidden">
-							<div className="bg-gray-50 border border-gray-200 rounded-lg">
-								<div className="px-4 py-3 bg-gray-100 border-b border-gray-200">
-									<h3 className="font-medium text-gray-800">
+						<div className="ocr-container">
+							<div className="ocr-box">
+								<div className="ocr-header">
+									<h3 className="ocr-title">
 										Nội dung đã đọc được:
 									</h3>
 								</div>
-								<div className="p-4 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-									<p className="whitespace-pre-wrap text-gray-700 leading-relaxed">
-										{ocrText}
-									</p>
+								<div className="ocr-content">
+									<p className="ocr-text">{ocrText}</p>
 								</div>
 							</div>
 						</div>
 					)}
 
-					<div className="flex flex-col gap-3">
-						<div className="flex items-center justify-center h-48 mb-4">
+					<div className="button-container">
+						<div className="camera-button-container">
 							<button
 								onClick={openCamera}
-								className="flex items-center justify-center bg-blue-600 text-white py-4 px-6 rounded-full font-medium hover:bg-blue-700 active:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg"
+								className="camera-button"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +277,7 @@ export default function Home() {
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									className="mr-2"
+									className="button-icon"
 								>
 									<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
 									<circle cx="12" cy="13" r="3"></circle>
@@ -292,19 +290,18 @@ export default function Home() {
 							<button
 								onClick={handleDownload}
 								disabled={isLoading}
-								className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 active:bg-green-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center"
+								className="download-button"
 							>
 								{isLoading ? (
 									<>
 										<svg
-											className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+											className="spinner button-icon"
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 24 24"
 										>
 											<circle
 												className="opacity-25"
-												s
 												cx="12"
 												cy="12"
 												r="10"
@@ -331,7 +328,7 @@ export default function Home() {
 											strokeWidth="2"
 											strokeLinecap="round"
 											strokeLinejoin="round"
-											className="mr-2"
+											className="button-icon"
 										>
 											<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 											<polyline points="7 10 12 15 17 10"></polyline>
