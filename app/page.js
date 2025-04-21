@@ -133,7 +133,7 @@ export default function Home() {
 				alert("Không tìm thấy nội dung ảnh");
 				return;
 			}
-            // 578516533320255302
+			// 578516533320255302
 			const searchOrder = await searchOrderPancakeById(
 				"578516533320255302"
 			);
@@ -149,7 +149,11 @@ export default function Home() {
 				dataUpdateTag,
 				ocrText
 			);
-
+			if (responseUpdate) {
+				alert("Cập nhật đơn hàng thành công");
+			} else {
+				alert("Cập nhật đơn hàng không thành công");
+			}
 			// Gửi ảnh lên server
 			// await axios.post("/api/upload", formData, {
 			// 	headers: {
