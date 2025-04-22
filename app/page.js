@@ -134,9 +134,7 @@ export default function Home() {
 				return;
 			}
 			// 578516533320255302
-			const searchOrder = await searchOrderPancakeById(
-				"578516533320255302"
-			);
+			const searchOrder = await searchOrderPancakeById(ocrText);
 
 			if (!searchOrder) {
 				alert("Không tìm thấy đơn hàng nào với ID này");
